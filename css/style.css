@@ -1,0 +1,189 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+  background: gray;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+/* Reset top and bottom margins from certain elements */
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.login-header {
+  background: blue;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.login-container {
+  background: whitesmoke;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background: whitesmoke;
+  border-color: gray;
+  color: dimgray;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: gray;
+}
+
+.login input[type="submit"] {
+  background: red;
+  border-color: transparent;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: lightcoral;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus {
+  border-color: darkred;
+}
+
+/*item / subitem tiles*/
+.tile-one {
+  margin-top: 50px; 
+  margin-left: 20px;
+}
+
+/*item / subitem tiles*/
+.tile-two-three {
+  height:450px; 
+  overflow: auto; 
+  margin-top: 50px; 
+  width: 100%;
+}
+
+.btn1 {
+  align-self: center;
+  padding: .5rem;
+  background: whitesmoke;
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+  height: 80px;
+  min-width: 300px;
+  display: inline-block;
+}
+
+.btn2 {
+  padding: .5rem;
+  background: lightcoral;
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+  font-size: 32pt;
+  height: 80px;
+  width: 300px;
+}
+
+.btn3 {
+  padding: .5rem;
+  background: whitesmoke;
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+  width: 150px;
+}
+
+.lbl1 {
+  text-align: center;
+  padding: .4rem;
+  background: lightgrey;
+  border-radius: 4px;
+  margin: 2px;
+  display: inline-block;
+  width: 100px;
+  height: 32px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.dimGrey {
+  background: dimgray; }
+
+.gray {
+  background: #f5f5f5; }
+
+.green {
+  background: #b9f6ca; }
+
+.yellow {
+  background: #ffff8d; }
+
+.blue {
+  background: #84ffff; }
+
+.purple {
+  background: #b388ff; }
+
+.red {
+  background: #ff8a80; }
+
+.gridListdemoBasicUsage md-grid-list {
+    margin: 8px;
+}
+
+.toolbardemoBasicUsage md-toolbar .md-button.md-icon-button .favorite-icon {
+    fill: #DE3641;
+}
+
+.toolbardemoBasicUsage md-toolbar md-toolbar-filler {
+    background-color: #e0e0e0;
+}
+
+.toolbardemoBasicUsage md-toolbar md-toolbar-filler #filler-icon {
+    fill: #4C9EF1;
+}
+
+.contentdemoBasicUsage div.demo-content {
+    height: 450px;
+}
+
+.contentdemoBasicUsage div[ng-controller] {
+    height: 100%;
+    padding-bottom: 15px;
+}
+
+.contentdemoBasicUsage md-content {
+    padding: 24px;
+}

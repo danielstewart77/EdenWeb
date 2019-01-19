@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eden</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Load c3.css -->
+        <link href="/c3/c3.css" rel="stylesheet">
+
+        <!-- Load d3.js and c3.js -->
+        <script src="https://d3js.org/d3.v5.js"></script>
+        <script src="/c3/c3.min.js"></script>
+
+        <script src="/controls/gauge.js"></script>
+    
+    
+</head>
+<body ng-app="eden" ng-controller="edenCtl" style="background-color: black">
+  <!-- <div ng-include="'/login.html'" ng-if="!enterprise"></div>
+  <div ng-if="enterprise"> -->
+  
+    <md-toolbar class="dimGrey" style="height:80px">
+        <div class="md-toolbar-tools dimGrey" style="height:80px">
+          <md-button class="btn1" ng-click="showMenu('true')">
+            Menu
+              <md-icon md-svg-icon="img/gear.svg"></md-icon>
+          </md-button>
+  
+          <h2 flex md-truncate>Eden Greenhouse Monitor v0.1</h2>
+          <!-- <md-button class="btn2" ng-click="signOut()">
+            Sign Out
+          </md-button> -->
+        </div>
+      </md-toolbar>
+
+    <section layout="row" flex md-theme="customTheme">
+
+        <md-sidenav class="md-sidenav-left" 
+          md-is-locked-open="menuVisible"
+          md-disable-backdrop md-whiteframe="4">
+    
+          <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+              <h1 class="md-flex">Menu</h1>
+            </div>
+          </md-toolbar>
+    
+          <md-content layout="column">
+            <p>
+              <input type="button" value="Config" ng-click="show('config')" class="btn2" />
+              <input type="button" value="Dashboard" ng-click="show('dashboard')" class="btn2" />
+            </p>
+
+            <md-button ng-click="showMenu(false)" class="btn2">
+              Close Menu
+            </md-button>
+          </md-content>
+    
+        </md-sidenav>
+  </section>
+
+  <div ng-if="template" ng-include="'pages/' + template + '.html'" flex></div>
+      
+  </div>
+  <script>
+    angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
+        
+        $scope.menuVisible = false;
+        $scope.template = 'dashboard';
+
+        $scope.showMenu = () => {
+            //toggle
+            if ($scope.menuVisible == true){
+                $scope.menuVisible = false;
+            }
+            else{
+                $scope.menuVisible = true;
+            }
+        };
+
+        $scope.show = (template) => {
+            if (template){
+                //pouchdb.find(type, $scope);
+                $scope.template = template;
+                $scope.menuVisible = false;
+            }
+
+            
+        };
+
+        if ($scope.template == 'dashboard'){
+                moistGauge('#channel0', 0, 'Basil 0');
+                moistGauge('#channel1', 1, 'Habanero');
+                moistGauge('#channel2', 2, 'Basil 2');
+                moistGauge('#channel3', 3, 'Basil 3');
+                tempGauge('#tempChart');
+            }
+
+    }).config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('customTheme')
+            .primaryPalette('grey')
+            .accentPalette('orange')
+            .warnPalette('red');
+    });
+</script>
+</body>
+</html>

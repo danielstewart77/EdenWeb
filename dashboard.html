@@ -1,0 +1,56 @@
+<html>
+  <body style="background-color:darkslategray;">
+    <div ng-controller="edenCtl" ng-cloak="" ng-app="edenApp" style="width: 80%; height: 80%">
+        <!-- <div>
+            <input type="checkbox" ng-model="ch0" ng-checked="true">Sensor 0</input>
+            <input type="checkbox" ng-model="ch1" ng-checked="true">Sensor 1</input>
+            <input type="checkbox" ng-model="ch2" ng-checked="false">Sensor 2</input>
+            <input type="checkbox" ng-model="ch3" ng-checked="false">Sensor 3</input>
+            <input type="checkbox" ng-model="ch4" ng-checked="false">Sensor 4</input>
+            <input type="checkbox" ng-model="ch5" ng-checked="false">Sensor 5</input>
+            <input type="checkbox" ng-model="ch6" ng-checked="false">Sensor 6</input>
+            <input type="checkbox" ng-model="ch7" ng-checked="false">Sensor 7</input>
+        </div> -->
+        
+        <md-grid-list
+        md-cols-xs="1" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                        md-row-height-gt-md="1:1" md-row-height="1:1"
+                        md-gutter="12px" md-gutter-gt-sm="8px">
+        
+            <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <div  id="channel0"></div>
+
+            </md-grid-tile>
+
+            <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <div  id="channel1"></div>
+
+            </md-grid-tile>
+
+            <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <div  id="channel2"></div>
+
+            </md-grid-tile>
+
+            <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <div  id="channel3"></div>
+
+            </md-grid-tile>
+
+            <md-grid-tile  md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                    <div id="tempChart"></div>
+    
+            </md-grid-tile>
+            
+
+            <!-- <div ng-show="ch4" id="channel4"></div>
+            <div ng-show="ch5" id="channel5"></div>
+            <div ng-show="ch6" id="channel6"></div>
+            <div ng-show="ch7" id="channel7"></div> -->
+        
+        </md-grid-list>
+        
+        
+    </div>
+  </body>
+</html>
