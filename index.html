@@ -84,6 +84,8 @@
         $scope.menuVisible = false;
         $scope.template = 'dashboard';
 
+        google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+
         for (var i = 0; i < 3; i++){
           drawGauge('channel' + i, 'channel' + i, 5);
         }
