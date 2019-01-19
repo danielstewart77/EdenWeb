@@ -15,14 +15,18 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <!--for the google charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="controls/gauge1.js"></script>
+
         <!-- Load c3.css -->
-        <link href="c3/c3.css" rel="stylesheet">
+        <!-- <link href="c3/c3.css" rel="stylesheet"> -->
 
         <!-- Load d3.js and c3.js -->
-        <script src="https://d3js.org/d3.v5.js"></script>
-        <script src="c3/c3.min.js"></script>
+        <!-- <script src="https://d3js.org/d3.v5.js"></script>
+        <script src="c3/c3.min.js"></script> -->
 
-        <script src="controls/gauge.js"></script>
+        <!-- <script src="controls/gauge.js"></script> -->
     
     
 </head>
@@ -78,6 +82,10 @@
         
         $scope.menuVisible = false;
         $scope.template = 'dashboard';
+
+        for (var i = 0; i < 3; i++){
+          drawGauge('channel' + i, 'channel' + i, 5);
+        }
 
         $scope.showMenu = () => {
             //toggle
