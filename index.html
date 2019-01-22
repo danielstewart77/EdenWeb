@@ -118,9 +118,10 @@
         $scope.drawCharts = () => {
           var promise = $.getJSON("https://edengreen.ddns.net/moisture");
           promise.done(function(reading) {
-            for (var i = 0; i < 4; i++){
-              drawGauge('channel' + i, 'channel' + i, promise['channel' + i]);
-            }
+            drawGauge('channel0', 'channel0', reading.channel0);
+            drawGauge('channel1', 'channel1', reading.channel1);
+            drawGauge('channel2', 'channel2', reading.channel2);
+            drawGauge('channel3', 'channel3', reading.channel3);
           }).fail(function(err){
             // send error to api
           });
