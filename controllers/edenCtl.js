@@ -3,10 +3,6 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     $scope.menuVisible = false;
     $scope.template = 'dashboard';
 
-    
-
-    
-
     $scope.showMenu = () => {
         //toggle
         if ($scope.menuVisible == true){
@@ -19,27 +15,23 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
 
     $scope.show = (template) => {
         if (template){
-            //pouchdb.find(type, $scope);
             $scope.template = template;
             $scope.menuVisible = false;
         }
 
-        
+        if ($scope.template == 'dashboard'){
+            $scope.refreshCharts();
+        }
     };
 
     $scope.refreshCharts = () => {
-      google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
-    google.charts.setOnLoadCallback(refresh);
+    //   google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+    // google.charts.setOnLoadCallback(refresh);
 
-      function refresh(){
+    //   function refresh(){
 
       var promise = $.getJSON("https://edengreen.ddns.net/moisture");
       promise.done(function(reading) {
-
-        // drawGauge('channel0', 'channel0', reading.channel0);
-        // drawGauge('channel1', 'channel1', reading.channel1);
-        // drawGauge('channel2', 'channel2', reading.channel2);
-        // drawGauge('channel3', 'channel3', reading.channel3);
 
         moistGauge('#channel0', reading.channel0, 'Basil 0');
         moistGauge('#channel1', reading.channel1, 'Habanero');
@@ -49,16 +41,12 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
       }).fail(function(err){
         // send error to api
       });
-      }
+    //   }
     };
-
-    
 
     if ($scope.template == 'dashboard'){
             $scope.refreshCharts();
         }
-
-    
 
 }).config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('customTheme')
