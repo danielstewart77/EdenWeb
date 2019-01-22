@@ -90,7 +90,8 @@
         $scope.menuVisible = false;
         $scope.template = 'dashboard';
 
-        
+        google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+        google.charts.setOnLoadCallback($scope.drawCharts);
 
         
 
@@ -116,8 +117,7 @@
 
         $scope.drawCharts = () => {
 
-          google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
-          google.charts.setOnLoadCallback(drawGauge);
+          
 
           
 
