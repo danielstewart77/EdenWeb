@@ -36,10 +36,15 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
       var promise = $.getJSON("https://edengreen.ddns.net/moisture");
       promise.done(function(reading) {
 
-        drawGauge('channel0', 'channel0', reading.channel0);
-        drawGauge('channel1', 'channel1', reading.channel1);
-        drawGauge('channel2', 'channel2', reading.channel2);
-        drawGauge('channel3', 'channel3', reading.channel3);
+        // drawGauge('channel0', 'channel0', reading.channel0);
+        // drawGauge('channel1', 'channel1', reading.channel1);
+        // drawGauge('channel2', 'channel2', reading.channel2);
+        // drawGauge('channel3', 'channel3', reading.channel3);
+
+        moistGauge('#channel0', 0, 'Basil 0');
+        moistGauge('#channel1', 1, 'Habanero');
+        moistGauge('#channel2', 2, 'Basil 2');
+        moistGauge('#channel3', 3, 'Basil 3');
 
       }).fail(function(err){
         // send error to api
