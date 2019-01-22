@@ -115,10 +115,6 @@
             
         };
 
-        if ($scope.template == 'dashboard'){
-                $scope.drawCharts();
-            }
-
         $scope.drawCharts = () => {
           var promise = $.getJSON("https://edengreen.ddns.net/moisture");
           promise.done(function(reading) {
@@ -129,6 +125,12 @@
             // send error to api
           });
         };
+
+        if ($scope.template == 'dashboard'){
+                $scope.drawCharts();
+            }
+
+        
 
     }).config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('customTheme')
