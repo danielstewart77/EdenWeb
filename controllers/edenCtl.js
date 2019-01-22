@@ -25,11 +25,6 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     };
 
     $scope.refreshCharts = () => {
-    //   google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
-    // google.charts.setOnLoadCallback(refresh);
-
-    //   function refresh(){
-
       var promise = $.getJSON("https://edengreen.ddns.net/moisture");
       promise.done(function(reading) {
 
@@ -41,7 +36,6 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
       }).fail(function(err){
         // send error to api
       });
-    //   }
     };
 
     if ($scope.template == 'dashboard'){
