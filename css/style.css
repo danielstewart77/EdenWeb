@@ -6,6 +6,11 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.gauge {
+  width: 90%;
+  height: 90%
+}
+
 .login {
   width: 400px;
   margin: 16px auto;
