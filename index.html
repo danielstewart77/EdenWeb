@@ -20,8 +20,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="controls/gauge1.js"></script>
     <script>
-      google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
-      google.charts.setOnLoadCallback(drawGauge);
+      
 
       
     </script>
@@ -116,12 +115,27 @@
         };
 
         $scope.drawCharts = () => {
+
+          google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+          google.charts.setOnLoadCallback(drawGauge);
+
+          
+
+
           var promise = $.getJSON("https://edengreen.ddns.net/moisture");
           promise.done(function(reading) {
-            drawGauge('channel0', 'channel0', reading.channel0);
-            drawGauge('channel1', 'channel1', reading.channel1);
-            drawGauge('channel2', 'channel2', reading.channel2);
-            drawGauge('channel3', 'channel3', reading.channel3);
+
+            var data = google.visualization.arrayToDataTable([
+              ["Label", "Value"],
+              ['channel0', reading.channel0]
+            ]);
+
+            drawGauge2('channel0', data);
+
+            //drawGauge('channel0', 'channel0', reading.channel0);
+            //drawGauge('channel1', 'channel1', reading.channel1);
+            //drawGauge('channel2', 'channel2', reading.channel2);
+            //drawGauge('channel3', 'channel3', reading.channel3);
           }).fail(function(err){
             // send error to api
           });
