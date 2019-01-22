@@ -18,6 +18,43 @@
 
     <!--for the google charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts(){
+          var promise = $.getJSON("https://edengreen.ddns.net/moisture");
+          promise.done(function(reading) {
+            for (var i = 0; i < 4; i++){
+              drawGauge('channel' + i, 'channel' + i, promise['channel' + i]);
+            }
+          }).fail(function(err){
+            // send error to api
+          });
+        }
+
+        function drawGauge(DivId, Label, Value) {
+
+          var data = google.visualization.arrayToDataTable([
+              ["Label", "Value"],
+              [Label, Value]
+          ]);
+
+          var view = new google.visualization.DataView(data);
+
+          var options = {
+                  redFrom: 0, redTo: 3.5,
+                  greenFrom: 3.5, greenTo: 6.5,
+                  yellowFrom: 6.5, yellowTo: 10,
+                  yellowColor: '#0000FF',
+                  min: 0,
+                  max: 10
+              };
+
+          var chart = new google.visualization.Gauge(document.getElementById(DivId));
+          chart.draw(view, options);
+        }
+    </script>
     <!-- <script type="text/javascript" src="controls/gauge1.js"></script> -->
 
         <!-- Load c3.css -->
@@ -84,20 +121,9 @@
         $scope.menuVisible = false;
         $scope.template = 'dashboard';
 
-        google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
+        
 
-        google.charts.setOnLoadCallback(drawCharts);
-
-        function drawCharts(){
-          var promise = $.getJSON("https://edengreen.ddns.net/moisture");
-          promise.done(function(reading) {
-            for (var i = 0; i < 4; i++){
-              drawGauge('channel' + i, 'channel' + i, promise['channel' + i]);
-            }
-          }).fail(function(err){
-            // send error to api
-          });
-        }
+        
 
         $scope.showMenu = () => {
             //toggle
@@ -123,27 +149,7 @@
                 drawCharts();
             }
 
-        function drawGauge(DivId, Label, Value) {
-
-          var data = google.visualization.arrayToDataTable([
-              ["Label", "Value"],
-              [Label, Value]
-          ]);
-
-          var view = new google.visualization.DataView(data);
-
-          var options = {
-                  redFrom: 0, redTo: 3.5,
-                  greenFrom: 3.5, greenTo: 6.5,
-                  yellowFrom: 6.5, yellowTo: 10,
-                  yellowColor: '#0000FF',
-                  min: 0,
-                  max: 10
-              };
-
-          var chart = new google.visualization.Gauge(document.getElementById(DivId));
-          chart.draw(view, options);
-        }
+        
 
     }).config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('customTheme')
