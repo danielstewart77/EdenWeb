@@ -86,14 +86,18 @@
 
         google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
 
-        google.charts.setOnLoadCallback(drawCharts);
+        google.charts.setOnLoadCallback($scope.drawCharts);
 
-        function drawCharts(){
-          for (var i = 0; i < 3; i++){
-            drawGauge('channel' + i, 'channel' + i, 5);
-          }
-        }
-        
+        scope.drawCharts = () => {
+          var promise = $.getJSON("https://edengreen.ddns.net/moisture");
+          promise.done(function(reading) {
+            for (var i = 0; i < 4; i++){
+              drawGauge('channel' + i, 'channel' + i, promise['channel' + i]);
+            }
+          }).fail(function(err){
+            // send error to api
+          });
+        };
 
         $scope.showMenu = () => {
             //toggle
@@ -116,11 +120,7 @@
         };
 
         if ($scope.template == 'dashboard'){
-                // moistGauge('#channel0', 0, 'Basil 0');
-                // moistGauge('#channel1', 1, 'Habanero');
-                // moistGauge('#channel2', 2, 'Basil 2');
-                // moistGauge('#channel3', 3, 'Basil 3');
-                // tempGauge('#tempChart');
+                $scope.drawCharts();
             }
 
     }).config(function ($mdThemingProvider) {
