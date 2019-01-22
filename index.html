@@ -88,7 +88,7 @@
 
         google.charts.setOnLoadCallback($scope.drawCharts);
 
-        scope.drawCharts = () => {
+        $scope.drawCharts = () => {
           var promise = $.getJSON("https://edengreen.ddns.net/moisture");
           promise.done(function(reading) {
             for (var i = 0; i < 4; i++){
