@@ -20,7 +20,7 @@
     <script src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="controls/gauge1.js"></script>
-    <script>
+   <!-- <script>
       google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
         google.charts.setOnLoadCallback(drawCharts);
 
@@ -38,7 +38,7 @@
         // send error to api
       });
       }
-    </script>
+    </script>-->
     <!-- <script type="text/javascript" src="controls/gauge1.js"></script> -->
 
         <!-- Load c3.css -->
@@ -152,7 +152,7 @@
         
 
         if ($scope.template == 'dashboard'){
-                //$scope.drawCharts();
+                $scope.refreshCharts();
             }
 
         
