@@ -86,9 +86,9 @@
 
         google.charts.load("current", { packages: ['corechart', 'bar', 'line', 'gauge'] });
 
-        google.charts.setOnLoadCallback($scope.drawCharts);
+        google.charts.setOnLoadCallback(drawCharts);
 
-        $scope.drawCharts = () => {
+        function drawCharts(){
           var promise = $.getJSON("https://edengreen.ddns.net/moisture");
           promise.done(function(reading) {
             for (var i = 0; i < 4; i++){
@@ -120,7 +120,7 @@
         };
 
         if ($scope.template == 'dashboard'){
-                $scope.drawCharts();
+                drawCharts();
             }
 
     }).config(function ($mdThemingProvider) {
