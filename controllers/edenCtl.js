@@ -34,10 +34,10 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
       promise.done(function(reading) {
           var data = JSON.parse(JSON.stringify(reading.Data));
 
-        moistGauge('#channel0', data.channel0, "reading.label0");
-        moistGauge('#channel1', data.channel1, "reading.label1");
-        moistGauge('#channel2', data.channel2, "reading.label2");
-        moistGauge('#channel3', data.channel3, "reading.label3");
+        moistGauge('#channel0', data['channel0'], "reading.label0");
+        moistGauge('#channel1', data['channel1'], "reading.label1");
+        moistGauge('#channel2', data['channel2'], "reading.label2");
+        moistGauge('#channel3', data['channel3'], "reading.label3");
 
       }).fail(function(err){
         // send error to api
