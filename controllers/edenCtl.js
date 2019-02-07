@@ -32,7 +32,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     $scope.refreshCharts = () => {
       var promise = $.getJSON('https://edenapi.azurewebsites.net/api/readings/bydeviceid/' + $scope.deviceId);
       promise.done(function(reading) {
-          var data = JSON.parse(JSON.stringify(reading.Data));
+          var data = JSON.parse(reading.Data);
 
         moistGauge('#channel0', data.channel0, "reading.label0");
         moistGauge('#channel1', data.channel1, "reading.label1");
