@@ -37,7 +37,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
 
           for (var i = 0; i < channels.length; i++)
           {
-            moistGauge('#channel' + i, channels[i].value, channels[i].name);
+            moistGauge('#channel' + i, channels[i].Value, channels[i].Name);
           }
 
       }).fail(function(err){
