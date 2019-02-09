@@ -44,7 +44,7 @@ function moistGauge(DivId, value, label){
         bindto: DivId,
         data: {
             columns: [
-            [label + ' Moisture', value]
+            [label, value]
             ],
             type: 'gauge',
         },
