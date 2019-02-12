@@ -5,7 +5,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     $scope.template = 'dashboard';
     $scope.Channels = null;
     $scope.Channel = null;
-    $scope.ChannelIds = null;
+    $scope.ChannelIds = {};
     $scopeOutputMessage = null;
 
     $scope.showMenu = () => {
