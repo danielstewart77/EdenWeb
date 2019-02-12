@@ -105,7 +105,8 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         $scope.edit = false;
     };
 
-    $scope.editChannel = () => {
+    $scope.editChannel = (channel) => {
+        $scope.Channel = channel;
         $scope.edit = true;
     }
 
