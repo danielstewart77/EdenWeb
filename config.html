@@ -7,9 +7,7 @@
         <md-content style="background:black">
             <md-list>
                 <md-list-item ng-model="Channel" ng-repeat="Channel in Channels">
-                    <label >Sensor {{ ChannelIds[Channel.Id] }}</label> 
-                    <label type="text">Channel.Name</label> 
-                    <md-button class="md-raised" ng-click="editChannel(Channel)">Edit</md-button>
+                    <md-button class="md-raised" ng-click="editChannel(Channel)"><label >Sensor {{ ChannelIds[Channel.Id] }} {{Channel.Name}} </label> </md-button>
                 </md-list-item>
             </md-list>
         </md-content>
