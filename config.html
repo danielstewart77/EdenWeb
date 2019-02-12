@@ -1,4 +1,4 @@
-<md-toolbar layout="row" class="md-hue-3">
+<md-toolbar layout="row">
     <div class="md-toolbar-tools">
         <span>Sensors</span>
     </div>
@@ -25,9 +25,10 @@
                 <md-list-item ng-model="Channel" ng-repeat="Channel in Channels">
                     <label>Sensor {{ ChannelIds[Channel.Id] }}</label> 
                     <input type="text" placeholder="Sensor Name" ng-model="Channel.Name">
-                    <input type="text" placeholder="Guage Value 1" ng-model="Calibration.VAlue1.X"><input type="text" placeholder="Sensor Value 1" ng-model="Calibration.VAlue1.Y">
-                    <input type="text" placeholder="Guage Value 2" ng-model="Calibration.VAlue2.X"><input type="text" placeholder="Sensor Value 2" ng-model="Calibration.VAlue2.Y">
-                    <input type="text" placeholder="Guage Value 3" ng-model="Calibration.VAlue3.X"><input type="text" placeholder="Sensor Value 3" ng-model="Calibration.VAlue3.Y">
+                    <br>
+                    <input type="text" placeholder="Guage Value 1" ng-model="Calibration.VAlue1.X">
+                    <br>
+                    <input type="text" placeholder="Sensor Value 1" ng-model="Calibration.VAlue1.Y">
                 </md-list-item>
             </md-list>
         </md-content>
