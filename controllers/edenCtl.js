@@ -50,7 +50,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     };
 
     $scope.loadChannels = () => {
-        var promise = $.getJSON('https://edenapi.azurewebsites.net/api/channels/' + $scope.deviceId);
+        var promise = $.getJSON('https://edenapi.azurewebsites.net/api/channels/bydeviceid' + $scope.deviceId);
         promise.done(function(reading) {
   
             $scope.Channels = JSON.parse(reading.Data);
