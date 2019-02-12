@@ -1,11 +1,24 @@
-angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
+angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $http) {
     
     $scope.deviceId = '71D4FC8E-D739-4D6D-9615-65FDDEA3FC89';
     $scope.menuVisible = false;
     $scope.template = 'dashboard';
     $scope.Channels = null;
-    $scope.Channel = null;
+    $scope.Channel = {
+        Id: null,
+        Name: null,
+        IsCailibrated: false,
+        Calibration: null,
+        DeviceId: $scope.deviceId,
+        Sensor: null
+    };
     $scope.ChannelIds = {};
+    $scope.Points = [];
+    $scope.Point = {
+        x: null,
+        y: null
+    };
+    $scope.Calibration = null;
     $scopeOutputMessage = null;
 
     $scope.showMenu = () => {
@@ -51,29 +64,39 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
 
     $scope.loadChannels = () => {
         var promise = $.getJSON('https://edenapi.azurewebsites.net/api/channels/bydeviceid/' + $scope.deviceId);
-        promise.done(function(reading) {
+        promise.done(function(channels) {
   
-            $scope.Channels = reading;
+            $scope.Channels = channels;
   
         }).fail(function(err){
           // send error to api
+          $scope.OutputMessage = response;
         });
     };
 
     $scope.saveConfig = () => {
-        var req = {
+        var getLine = {
+            method: 'Get',
+            url: 'https://edenapi.azurewebsites.net/api/channels/getcalibration' + $scope.Points
+        }
+
+        $http(getLine).then(function successCallback(response) {
+            $scope.Channel.Calibration = response;
+        }, function errorCallback(response) {
+            $scope.OutputMessage = response;
+        });
+
+        var putChannel = {
             method: 'PUT',
             url: 'https://edenapi.azurewebsites.net/api/channels/',
-            data: {
-                //$scope.
-                //$scope.Channels,
-            }
+            data: $scope.Channel
         };
 
-        $http(req).then(function successCallback(response) {
-            $scope.refreshCharts();
-            $scope.show('dashboard');
-            $scope.OutputMessage = response.data;
+        $http(putChannel).then(function successCallback(response) {
+            $scope.loadChannels();
+            //$scope.refreshCharts();
+            //$scope.show('dashboard');
+            $scope.OutputMessage = response;
         }, function errorCallback(response) {
             $scope.OutputMessage = response.data;
         });
