@@ -1,13 +1,13 @@
-
-<div>
-    <span>Sensors</span>
-</div>
-<div layout-gt-sm="row" layout="column">
+<md-toolbar layout="row"></md-toolbar>
+    <div class="md-toolbar-tools" style="background:black">
+        <span>Sensors</span>
+    </div>
+<div layout-gt-sm="row" layout="column" style="background:black">
     <div flex-gt-sm="30" flex="">
         <md-content>
             <md-list>
                 <md-list-item ng-model="Channel" ng-repeat="Channel in Channels">
-                    <label ng-selected="editChannel()" >Sensor {{ ChannelIds[Channel.Id] }}</label> 
+                    <label >Sensor {{ ChannelIds[Channel.Id] }}</label> 
                     <label type="text">Channel.Name</label> 
                     <md-button class="md-raised" ng-click="editChannel(Channel)">Save</md-button>
                 </md-list-item>
