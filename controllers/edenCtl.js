@@ -53,7 +53,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
         var promise = $.getJSON('https://edenapi.azurewebsites.net/api/channels/bydeviceid/' + $scope.deviceId);
         promise.done(function(reading) {
   
-            $scope.Channels = JSON.parse(reading);
+            $scope.Channels = reading;
   
         }).fail(function(err){
           // send error to api
