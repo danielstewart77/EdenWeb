@@ -3,10 +3,10 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
     $scope.deviceId = '71D4FC8E-D739-4D6D-9615-65FDDEA3FC89';
     $scope.menuVisible = false;
     $scope.template = 'dashboard';
-    $scope.label0 = '';
-    $scope.label1 = '';
-    $scope.label2 = '';
-    $scope.label3 = '';
+    $scope.Channels = null;
+    $scope.Channel = null;
+    $scope.ChannelIds = null;
+    $scopeOutputMessage = null;
 
     $scope.showMenu = () => {
         //toggle
@@ -38,11 +38,42 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
           for (var i = 0; i < channels.length; i++)
           {
             moistGauge('#channel' + i, channels[i].Value, channels[i].Name);
+            $scope.ChannelIds[channels[i].Id] = channels[i].Sensor;
           }
 
       }).fail(function(err){
         // send error to api
       });
+    };
+
+    $scope.loadChannels = () => {
+        var promise = $.getJSON('https://edenapi.azurewebsites.net/api/channels/' + $scope.deviceId);
+        promise.done(function(reading) {
+  
+            $scope.Channels = JSON.parse(reading.Data);
+  
+        }).fail(function(err){
+          // send error to api
+        });
+    };
+
+    $scope.saveConfig = () => {
+        var req = {
+            method: 'PUT',
+            url: 'https://edenapi.azurewebsites.net/api/channels/',
+            data: {
+                //$scope.
+                //$scope.Channels,
+            }
+        };
+
+        $http(req).then(function successCallback(response) {
+            $scope.refreshCharts();
+            $scope.show('dashboard');
+            $scope.OutputMessage = response.data;
+        }, function errorCallback(response) {
+            $scope.OutputMessage = response.data;
+        });
     };
 
     if ($scope.template == 'dashboard'){

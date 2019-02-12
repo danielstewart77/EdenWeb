@@ -1,13 +1,18 @@
-<label>Channel 0:
-    <input type="text" ng-model="label0">
-</label><br/>
-<label>Channel 1:
-    <input type="text" ng-model="label1">
-</label><br/>
-<label>Channel 2:
-    <input type="text" ng-model="label2">
-</label><br/>
-<label>Channel 3:
-    <input type="text" ng-model="label3">
-</label><br/>
+<md-toolbar layout="row" class="md-hue-3">
+    <div class="md-toolbar-tools">
+        <span>Sensors</span>
+    </div>
+</md-toolbar>
+<md-content>
+    <md-list>
+        <md-list-item ng-model="Channel" ng-repeat="Channel in Channels">
+            <label>Sensor {{ ChannelIds[Channel.Id] }}</label> 
+            <input type="text" placeholder="Sensor Name" ng-model="Channel.Name">
+            <input type="text" placeholder="Guage Value 1" ng-model="Calibration.VAlue1.X"><input type="text" placeholder="Sensor Value 1" ng-model="Calibration.VAlue1.Y">
+            <input type="text" placeholder="Guage Value 2" ng-model="Calibration.VAlue2.X"><input type="text" placeholder="Sensor Value 2" ng-model="Calibration.VAlue2.Y">
+            <input type="text" placeholder="Guage Value 3" ng-model="Calibration.VAlue3.X"><input type="text" placeholder="Sensor Value 3" ng-model="Calibration.VAlue3.Y">
+        </md-list-item>
+    </md-list>
+</md-content>
 <md-button class="md-raised" ng-click="saveConfig()">Save</md-button>
+<label>{{ OutputMessage }}</label>
