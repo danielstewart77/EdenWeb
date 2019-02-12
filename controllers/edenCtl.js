@@ -27,6 +27,9 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope) {
         if ($scope.template == 'dashboard'){
             $scope.refreshCharts();
         }
+        if ($scope.template == 'config'){
+            $scope.loadChannels();
+        }
     };
 
     $scope.refreshCharts = () => {
