@@ -8,12 +8,13 @@
         <md-content>
             <md-list>
                 <md-list-item ng-model="Channel" ng-repeat="Channel in Channels">
-                    <label ng-selected="(edit = true)" >Sensor {{ ChannelIds[Channel.Id] }}</label> 
-                    <label type="text" ng-model="Channel.Name">
+                    <label ng-selected="editChannel()" >Sensor {{ ChannelIds[Channel.Id] }}</label> 
+                    <label type="text">Channel.Name</label> 
+                    <md-button class="md-raised" ng-click="editChannel(Channel)">Save</md-button>
                 </md-list-item>
             </md-list>
         </md-content>
-        <md-button class="md-raised" ng-click="saveConfig()">Save</md-button>
+        
     </div>
 
     <md-divider></md-divider>

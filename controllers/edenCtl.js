@@ -2,6 +2,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     
     $scope.deviceId = '71D4FC8E-D739-4D6D-9615-65FDDEA3FC89';
     $scope.menuVisible = false;
+    $scope.edit = false;
     $scope.template = 'dashboard';
     $scope.Channels = null;
     $scope.Channel = {
@@ -100,7 +101,14 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         }, function errorCallback(response) {
             $scope.OutputMessage = response.data;
         });
+
+        $scope.edit = false;
     };
+
+    $scope.editChannel()
+    {
+        $scope.edit = true;
+    }
 
     if ($scope.template == 'dashboard'){
             $scope.refreshCharts();
