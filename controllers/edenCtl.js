@@ -72,7 +72,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
   
         }).fail(function(err){
           // send error to api
-          $scope.OutputMessage = response;
+          $scope.OutputMessage = err;
         });
     };
 
