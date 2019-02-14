@@ -111,7 +111,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     };
 
     $scope.savePoint = () => {
-        $scope.Points.push($scope.Point);
+        $scope.Points.push({x: $scope.Point.x, y: $scope.Point.y);
         $scope.PointNumber += 1;
         $scope.Point.x = null;
         $scope.Point.y = null;
