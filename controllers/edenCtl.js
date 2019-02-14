@@ -113,6 +113,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     $scope.savePoint = () => {
         $scope.Points.push($scope.Point);
         $scope.PointNumber += 1;
+        $scope.Point) = null;
     };
 
     $scope.editChannel = (channel) => {
