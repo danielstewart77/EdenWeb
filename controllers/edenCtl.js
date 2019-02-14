@@ -20,7 +20,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         y: null
     };
     $scope.Calibration = null;
-    $scope.CalibrationNumber = 0;
+    $scope.PointNumber = 0;
     $scope.OutputMessage = null;
 
     $scope.showMenu = () => {
@@ -110,9 +110,9 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         });
     };
 
-    $scope.savePoint = (point) => {
-        $scope.Points.push(point);
-        $scope.CalibrationNumber += 1;
+    $scope.savePoint = () => {
+        $scope.Points.push($scope.Point);
+        $scope.PointNumber += 1;
     };
 
     $scope.editChannel = (channel) => {
