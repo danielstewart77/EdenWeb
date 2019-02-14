@@ -84,27 +84,30 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
 
         $http(getLine).then(function successCallback(response) {
             $scope.Channel.Calibration = response;
+
+
+            var putChannel = {
+                method: 'PUT',
+                url: 'https://edenapi.azurewebsites.net/api/channels/',
+                data: $scope.Channel
+            };
+
+            $http(putChannel).then(function successCallback(response) {
+                $scope.loadChannels();
+                //$scope.refreshCharts();
+                //$scope.show('dashboard');
+                $scope.OutputMessage = response;
+            }, function errorCallback(response) {
+                $scope.OutputMessage = response.data;
+            });
+
+            $scope.edit = false;
+            $scope.CalibrationNumber = 0;
+
+
         }, function errorCallback(response) {
             $scope.OutputMessage = response;
         });
-
-        var putChannel = {
-            method: 'PUT',
-            url: 'https://edenapi.azurewebsites.net/api/channels/',
-            data: $scope.Channel
-        };
-
-        $http(putChannel).then(function successCallback(response) {
-            $scope.loadChannels();
-            //$scope.refreshCharts();
-            //$scope.show('dashboard');
-            $scope.OutputMessage = response;
-        }, function errorCallback(response) {
-            $scope.OutputMessage = response.data;
-        });
-
-        $scope.edit = false;
-        $scope.CalibrationNumber = 0;
     };
 
     $scope.savePoint = (point) => {
