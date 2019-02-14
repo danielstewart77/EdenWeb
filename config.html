@@ -20,8 +20,8 @@
         <md-content style="background:black">
             <label>Sensor {{ ChannelIds[Channel.Id] }} Calibration Point: {{PointNumber}}</label> 
             <input type="text" placeholder="Sensor Name" ng-model="Channel.Name">
-            <input type="text" placeholder="Guage Value" ng-model="Point.X">
-            <input type="text" placeholder="Sensor Value" ng-model="Point.Y">
+            <input type="text" placeholder="Guage Value" ng-model="Point.x">
+            <input type="text" placeholder="Sensor Value" ng-model="Point.y">
             <md-button class="md-raised" ng-click="savePoint()">Save Point</md-button>
         </md-content>
     </div>
