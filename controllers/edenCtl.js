@@ -20,7 +20,8 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         y: null
     };
     $scope.Calibration = null;
-    $scopeOutputMessage = null;
+    $scope.CalibrationNumber = 0;
+    $scope.OutputMessage = null;
 
     $scope.showMenu = () => {
         //toggle
@@ -103,12 +104,18 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         });
 
         $scope.edit = false;
+        $scope.CalibrationNumber = 0;
+    };
+
+    $scope.savePoint = (point) => {
+        $scope.Points.push(point);
+        $scope.CalibrationNumber += 1;
     };
 
     $scope.editChannel = (channel) => {
         $scope.Channel = channel;
         $scope.edit = true;
-    }
+    };
 
     if ($scope.template == 'dashboard'){
             $scope.refreshCharts();
