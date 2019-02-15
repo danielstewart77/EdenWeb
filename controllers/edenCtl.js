@@ -79,8 +79,8 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     $scope.saveConfig = () => {
         var getLine = {
             method: 'Get',
-            url: 'http://localhost:17500//api/channels/getcalibration/' + JSON.stringify($scope.Points)
-            //url: 'https://edenapi.azurewebsites.net/api/channels/getcalibration/' + $scope.Points
+            url: 'http://localhost:17500//api/channels/getcalibration/',
+            data: $scope.Points
         }
 
         $http(getLine).then(function successCallback(response) {
@@ -89,7 +89,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
 
             var putChannel = {
                 method: 'PUT',
-                url: 'https://edenapi.azurewebsites.net/api/channels/',
+                url: 'https://edenapi.azurewebsites.net/api/channels/' + $scope.Channel.Id,
                 data: $scope.Channel
             };
 
