@@ -78,7 +78,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
 
     $scope.saveConfig = () => {
         var getLine = {
-            method: 'Get',
+            method: 'POST',
             url: 'http://localhost:17500//api/channels/getcalibration/',
             data: $scope.Points
         }
