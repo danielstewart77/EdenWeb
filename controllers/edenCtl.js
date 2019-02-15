@@ -52,7 +52,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
       var promise = $.getJSON('https://edenapi.azurewebsites.net/api/readings/bydeviceid/' + $scope.deviceId);
       promise.done(function(reading) {
 
-        $scope.Clock = reading.Time;
+        $scope.Clock = new Date(reading.Time).toString("hh:mm tt");
 
         var channels = JSON.parse(reading.Data);
 
