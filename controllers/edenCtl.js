@@ -106,7 +106,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
             });
 
             $scope.edit = false;
-            $scope.CalibrationNumber = 0;
+            $scope.PointNumber = 0;
 
 
         }, function errorCallback(response) {
