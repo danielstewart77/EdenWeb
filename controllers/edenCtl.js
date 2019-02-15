@@ -84,8 +84,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
         }
 
         $http(getLine).then(function successCallback(response) {
-            $scope.Channel.Calibration = response.data;
-
+            $scope.Channel.Calibration = JSON.stringify(response.data);
 
             var putChannel = {
                 method: 'PUT',
