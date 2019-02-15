@@ -79,7 +79,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     $scope.saveConfig = () => {
         var getLine = {
             method: 'Get',
-            url: 'http://localhost:17500//api/channels/getcalibration/' + $scope.Points
+            url: 'http://localhost:17500//api/channels/getcalibration/' + JSON.stringify($scope.Points)
             //url: 'https://edenapi.azurewebsites.net/api/channels/getcalibration/' + $scope.Points
         }
 
