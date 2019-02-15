@@ -21,6 +21,7 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
     };
     $scope.Calibration = null;
     $scope.PointNumber = 0;
+    $scope.Clock = null;
     $scope.OutputMessage = null;
 
     $scope.showMenu = () => {
@@ -51,13 +52,15 @@ angular.module('eden', ['ngMaterial']).controller('edenCtl', function ($scope, $
       var promise = $.getJSON('https://edenapi.azurewebsites.net/api/readings/bydeviceid/' + $scope.deviceId);
       promise.done(function(reading) {
 
-          var channels = JSON.parse(reading.Data);
+        $scope.Clock = reading.Time;
 
-          for (var i = 0; i < channels.length; i++)
-          {
-            moistGauge('#channel' + i, channels[i].Value, channels[i].Name);
-            $scope.ChannelIds[channels[i].Id] = channels[i].Sensor;
-          }
+        var channels = JSON.parse(reading.Data);
+
+        for (var i = 0; i < channels.length; i++)
+        {
+        moistGauge('#channel' + i, channels[i].Value, channels[i].Name);
+        $scope.ChannelIds[channels[i].Id] = channels[i].Sensor;
+        }
 
       }).fail(function(err){
         // send error to api

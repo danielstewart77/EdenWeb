@@ -37,6 +37,8 @@
             Menu
               <md-icon md-svg-icon="img/gear.svg"></md-icon>
           </md-button>
+
+          Last Update {{ Clock | date:'HH:mm:ss'}}
   
           <h2 flex md-truncate>Eden Greenhouse Monitor v0.1</h2>
           <md-button class="btn2" ng-click="refreshCharts()">
