@@ -58,20 +58,20 @@
           </md-toolbar>
     
           <md-content layout="column">
-            <p>
-              <md-button value="" ng-click="show('config')" class="md-raised">Config</md-button>
-              <md-button ng-click="show('dashboard')" class="md-raised">Dashboard</md-button>
-            </p>
+            <md-button value="" ng-click="show('config')" class="">Config</md-button>
+            <md-button ng-click="show('dashboard')" class="">Dashboard</md-button>
 
-            <md-button ng-click="showMenu(false)" class="btn2">
+            <md-button ng-click="showMenu(false)" class="">
               Close Menu
             </md-button>
           </md-content>
     
         </md-sidenav>
+
+        <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
   </section>
 
-  <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
+  
       
   <label>{{ OutputMessage }}</label>
 </body>
