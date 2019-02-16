@@ -45,7 +45,7 @@
         </div>
       </md-toolbar>
 
-    <section layout="row" flex md-theme="customTheme">
+    <section layout="column" flex md-theme="customTheme">
 
         <md-sidenav class="md-sidenav-left" 
           md-is-locked-open="menuVisible"
@@ -59,8 +59,8 @@
     
           <md-content layout="column">
             <p>
-              <input type="button" value="Config" ng-click="show('config')" class="btn2" />
-              <input type="button" value="Dashboard" ng-click="show('dashboard')" class="btn2" />
+              <md-button value="" ng-click="show('config')" class="md-raised">Config</md-button>
+              <md-button ng-click="show('dashboard')" class="md-raised">Dashboard</md-button>
             </p>
 
             <md-button ng-click="showMenu(false)" class="btn2">
