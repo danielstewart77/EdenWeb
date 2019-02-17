@@ -45,9 +45,9 @@
         </div>
       </md-toolbar>
 
-      <div layout="column" flex md-theme="customTheme">
+      <div layout="row" flex md-theme="customTheme">
 
-          <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
+          
 
         <md-sidenav class="md-sidenav-left" 
           md-is-locked-open="menuVisible"
@@ -70,6 +70,7 @@
     
         </md-sidenav>
             
+        <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
       
     </div>
 
