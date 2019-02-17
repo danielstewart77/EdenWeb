@@ -47,6 +47,8 @@
 
       <div layout="column" flex md-theme="customTheme">
 
+          <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
+
         <md-sidenav class="md-sidenav-left" 
           md-is-locked-open="menuVisible"
           md-disable-backdrop md-whiteframe="4">
@@ -68,7 +70,7 @@
     
         </md-sidenav>
             
-      <div style="background-color:black" ng-if="template" ng-include="template + '.html'" flex></div>
+      
     </div>
 
   
